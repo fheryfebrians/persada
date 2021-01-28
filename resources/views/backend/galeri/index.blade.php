@@ -34,6 +34,7 @@
 											<thead>
 												<tr class="headings">
 													<th>ID</th>
+													<th>Bidang</th>
                                                     <th>Foto</th>
                                                     <th>Keterangan</th>
 												</tr>
@@ -41,7 +42,8 @@
                                             @foreach ($galeris as $galeri)
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{ $galeri->id }}</td>
+														<td>{{ $galeri->id }}</td>
+														<td>{{ $galeri->bidang }}</td>
                                                         <td>
                                                             <img src="{{ asset('storage/galeri/'. $galeri->foto) }}" alt="" style="width: 100px;">
                                                         </td>

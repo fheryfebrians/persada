@@ -37,6 +37,7 @@ class GaleriController extends Controller
         }
 
         $galeri = new Galeri();
+        $galeri->kategori = $request->kategori;
         $galeri->foto = $foto;
         $galeri->keterangan = $request->keterangan;
         $galeri->save();

@@ -1,4 +1,4 @@
-@extends('admin.layout.auth')
+@extends('backend.layout.auth')
 
 @section('pageTitle', 'Admin Login')
 

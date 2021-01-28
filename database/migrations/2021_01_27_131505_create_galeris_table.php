@@ -15,6 +15,7 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('bidang', ['Tim Tulangan', 'Tim Produksi', 'Tim Finishing', 'Tim Utilitas Pabrik'])->nullable();
             $table->string('foto')->nullable();
             $table->longText('keterangan')->nullable();
             $table->timestamps();

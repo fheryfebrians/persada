@@ -31,7 +31,19 @@
 						
 						<form class="form-horizontal form-label-left" name="frmBlogPost" id="formPost" action="{{ url('admin/galeri/create') }}" method="post" enctype="multipart/form-data">
 							@csrf
-							
+							<div class="item form-group">
+								<label for="" class="control-lable col-md-4 col-sm-4 col-xs-12">Bidang <span class="required">*</span></label>
+								<div class="col-md-4 col-sm-6 col-xs-12">
+									<select name="bidang" id="">
+										<option value="">--Pilih Bidang--</option>
+										<option value="Tim Tulangan">Tim Tulangan</option>
+										<option value="Tim Produksi">Tim Produksi</option>
+										<option value="Tim Finishing">Tim Finishing</option>
+										<option value="Tim Utilitas Pabrik">Tim Utilitas Pabrik</option>
+									</select>
+								</div>
+							</div>
+
 							<div class="item form-group">
 								<label class="control-label col-md-4 col-sm-4 col-xs-12" for="name">Foto  <span class="required">*</span></label>
 								<div class="col-md-4 col-sm-6 col-xs-12">
