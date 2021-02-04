@@ -20,6 +20,11 @@
 			</ul>
 		</li>
 		<li style="cursor:pointer;">
+			<a href="{{ url('admin/banner') }}">
+				<i class="fa fa-home"></i> Banner
+			</a>
+		</li>
+		<li style="cursor:pointer;">
 			<a href="{{ url('admin/proyek') }}">
 				<i class="fa fa-money"></i> Daftar Proyek
 			</a>

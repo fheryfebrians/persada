@@ -11,11 +11,30 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
+
+Route::namespace('Frontend')->group(function () {
+    Route::get('/', 'HomeController@index');
+    
+    Route::group(['prefix' => 'tentang'], function () {
+        Route::get('tulangan', 'TentangController@tulangan');
+        Route::get('produksi', 'TentangController@produksi');
+        Route::get('finishing', 'TentangController@finishing');
+        Route::get('utpabrik', 'TentangController@utpabrik');
+    });
+
+    Route::group(['prefix' => 'galeri'], function () {
+        Route::get('tulangan', 'GaleriController@tulangan');
+        Route::get('produksi', 'GaleriController@produksi');
+        Route::get('finishing', 'GaleriController@finishing');
+        Route::get('utpabrik', 'GaleriController@utpabrik');
+        Route::get('k3', 'GaleriController@k3');
+    });
+});
 
 
 Route::namespace('Backend')->group(function () {
@@ -32,6 +51,10 @@ Route::namespace('Backend')->group(function () {
         Route::patch('/visi/update/1', 'ProfileController@updateVisi');
         Route::get('misi', 'ProfileController@misi');
         Route::patch('/misi/update/1', 'ProfileController@updateMisi');
+
+        Route::get('banner', 'BannerController@index');
+        Route::post('banner/create', 'BannerController@create');
+        Route::delete('banner/hapus/{id}', 'BannerController@hapus')->name('admin/banner/hapus');
 
         Route::get('proyek', 'ProyekController@index');
         Route::get('proyek/create', 'ProyekController@create');
