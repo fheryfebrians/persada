@@ -52,7 +52,7 @@
                                     @method('PATCH')
                                     <div class="item form-group">
                                         <div class="col-md-12 col-sm-6 col-xs-12">
-                                            <textarea name="profile" id="" cols="100" rows="20"></textarea>
+                                            <textarea name="profile" id="summernote" cols="100" rows="20"></textarea>
                                         </div>
                                     </div>
                                     
@@ -87,20 +87,23 @@
   
 <script src="{{ asset('admin/js/jquery.validate.js') }}"></script>
 <script src="{{ asset('admin/js/additional-methods.min.js') }}"></script>
-{{-- 
-<script type="text/javascript">
-$(document).ready(function () {
 
-	CKEDITOR.replace('profile',
-    {
-        filebrowserBrowseUrl :"{{ asset('admin/ckeditor/filemanager/browser/default/browser.html?Connector=admin/ckeditor/filemanager/connectors/php/connector.php') }}",
-        filebrowserImageBrowseUrl : "{{ asset('admin/ckeditor/filemanager/browser/default/browser.html?Type=Image&Connector=admin/ckeditor/filemanager/connectors/php/connector.php') }}",
-        filebrowserFlashBrowseUrl :"{{ asset('admin/ckeditor/filemanager/browser/default/browser.html?Type=Flash&Connector=admin/ckeditor/filemanager/connectors/php/connector.php') }}",
-		filebrowserUploadUrl  :"{{ asset('admin/ckeditor/filemanager/connectors/php/upload.php?Type=File') }}",
-		filebrowserImageUploadUrl : "{{ asset('admin/ckeditor/filemanager/connectors/php/upload.php?Type=Image') }}",
-		filebrowserFlashUploadUrl : "{{ asset('admin/ckeditor/filemanager/connectors/php/upload.php?Type=Flash') }}" 
-	}); 
-	
+{{-- <script type="text/javascript">
+$(document).ready(function() {
+  $('#summernote').summernote({
+        placeholder: '',
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
 });
 </script> --}}
 @endsection

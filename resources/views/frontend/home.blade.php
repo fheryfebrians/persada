@@ -28,8 +28,7 @@
                     <div class="text-container">
                         <div class="section-title">Sekilas Tentang Kami</div>
                         <h2>Beton Emas Persada</h2>
-                        <p>CV Beton Emas Persada merupakan perusahaan yang bergerak dalam bidang pelayanan jasa konstruksi, proyek dan pembuatan beton pracetak dengan tim yang profesional. Perusahaan CV Beton Emas Persada didirikan oleh peran penting satu orang yaitu Ali Mahmudi selaku CEO dari perusahaan yang sekarang menjabat sebagai Direktur Utama. CV Beton Emas Persada didirikan atas dasar ketidaksengajaan pada tahun 2015 salah satu perusahaan Beton Pracetak terbaik di indonesia membutuhkan karyawan untuk mengerjakan utilitas pabriknya dan kemudian kami dipercaya untuk yang memproduksi produk mereka. Pada, Tahun 2019 bulan September merupakan awal dari kemajuan perusahaan kami dan mulai mengawali surat perjanjian kerjasama dengan perusahaan PT Wika Kobe. Berbagai Produk telah kami kerjakan seperti Produk Hollow Girder, Full Slab dan Half Slab, Linning, dan proyek yang kami akan kerjakan yaitu Mega Proyek Tunnel Segment MRT Jakarta Phase II yang akan mulai produksi massal pada bulan Februari Tahun 2021.</p>
-                        
+                        <p>{{ $profiles->profile }}</p>                        
                         
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
@@ -107,7 +106,7 @@
                         </span>
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOne">
-                        CV. Beton Emas Persada adalah Perusahaan mitra terpercaya dalam indsutri penyedia jasa beton pracetak dan konstruksi.
+                        {{ $profiles->visi }}
                     </div>
                 </div> <!-- end of item -->
 
@@ -119,18 +118,13 @@
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionOne">
                         <ul class="list-unstyled li-space-lg indent">
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">&nbsp Menempatkan kepuasan klien sebgai komitmen utama.</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">&nbsp Menempatkan mitra kerja sebagai bagian integral dari tim kerja.</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">&nbspMemiliki sumber daya manusia yang profesional, berintegritas tinggi serta berorientasi kepada peningkatan secara terus-menerus.</div>
-                            </li>
+                            @foreach ($misis as $misi)
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">{{ $misi->misi }}</div>
+                                </li>
+                            @endforeach
+                           
                         </ul>
                     </div>
                    
@@ -160,36 +154,84 @@
                 <div class="col-lg-12">
                     <!-- Filter -->
                     <div class="button-group filters-button-group">
-                        <a class="button is-checked" data-filter="*"><span>SHOW ALL</span></a>
-                        <a class="button" data-filter=".design"><span>DESIGN</span></a>
-                        <a class="button" data-filter=".development"><span>DEVELOPMENT</span></a>
-                        <a class="button" data-filter=".marketing"><span>MARKETING</span></a>
-                        <a class="button" data-filter=".seo"><span>SEO</span></a>
+                        <a class="button is-checked" data-filter=".tulangan"><span>TULANGAN</span></a>
+                        <a class="button" data-filter=".produksi"><span>PRODUKSI</span></a>
+                        <a class="button" data-filter=".finishing"><span>FINISHING</span></a>
+                        <a class="button" data-filter=".utilitas"><span>UTILITAS PABRIK</span></a>
+                        <a class="button" data-filter=".k3"><span>K3</span></a>
                     </div> <!-- end of button group -->
                     <div class="grid">
-                        <div class="element-item development">
-                            <a class="popup-with-move-anim" href="#project-1"><div class="element-item-overlay"><span>Online Banking</span></div><img src="{{ asset('frontend/images/project-1.jpg') }}" alt="alternative"></a>
+                        <div class="element-item tulangan">
+                            @foreach ($tulangan as $tul)
+                                <a class="popup-with-move-anim" href="#project-1">
+                                    <div class="element-item-overlay">
+                                        <span>{{ $tul->description }}</span>
+                                    </div>
+                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
+                                </a>
+                            @endforeach
                         </div>
-                        <div class="element-item development">
-                            <a class="popup-with-move-anim" href="#project-2"><div class="element-item-overlay"><span>Classic Industry</span></div><img src="{{ asset('frontend/images/project-2.jpg') }}" alt="alternative"></a>
+                        <div class="element-item produksi">
+                            @foreach ($produksi as $tul)
+                                <a class="popup-with-move-anim" href="#project-1">
+                                    <div class="element-item-overlay">
+                                        <span>{{ $tul->description }}</span>
+                                    </div>
+                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
+                                </a>
+                            @endforeach
                         </div>
-                        <div class="element-item design development marketing">
-                            <a class="popup-with-move-anim" href="#project-3"><div class="element-item-overlay"><span>BoomBap Audio</span></div><img src="{{ asset('frontend/images/project-3.jpg') }}" alt="alternative"></a>
+                        <div class="element-item design finishing">
+                            @foreach ($finishing as $tul)
+                                <a class="popup-with-move-anim" href="#project-1">
+                                    <div class="element-item-overlay">
+                                        <span>{{ $tul->description }}</span>
+                                    </div>
+                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
+                                </a>
+                            @endforeach
                         </div>
-                        <div class="element-item design development marketing">
-                            <a class="popup-with-move-anim" href="#project-4"><div class="element-item-overlay"><span>Van Moose</span></div><img src="{{ asset('frontend/images/project-4.jpg') }}" alt="alternative"></a>
+                        <div class="element-item utilitas">
+                            @foreach ($utilitas as $tul)
+                                <a class="popup-with-move-anim" href="#project-1">
+                                    <div class="element-item-overlay">
+                                        <span>{{ $tul->description }}</span>
+                                    </div>
+                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
+                                </a>
+                            @endforeach
                         </div>
-                        <div class="element-item design development marketing seo">
-                            <a class="popup-with-move-anim" href="#project-5"><div class="element-item-overlay"><span>Joy Moments</span></div><img src="{{ asset('frontend/images/project-5.jpg') }}" alt="alternative"></a>
+                        <div class="element-item k3">
+                            @foreach ($k3 as $tul)
+                                <a class="popup-with-move-anim" href="#project-1">
+                                    <div class="element-item-overlay">
+                                        <span>{{ $tul->description }}</span>
+                                    </div>
+                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
+                                </a>
+                            @endforeach
                         </div>
-                        <div class="element-item design marketing seo">
-                            <a class="popup-with-move-anim" href="#project-6"><div class="element-item-overlay"><span>Spark Events</span></div><img src="{{ asset('frontend/images/project-6.jpg') }}" alt="alternative"></a>
-                        </div>
-                        <div class="element-item design marketing">
-                            <a class="popup-with-move-anim" href="#project-7"><div class="element-item-overlay"><span>Casual Wear</span></div><img src="{{ asset('frontend/images/project-7.jpg') }}" alt="alternative"></a>
-                        </div>
-                        <div class="element-item design marketing">
-                            <a class="popup-with-move-anim" href="#project-8"><div class="element-item-overlay"><span>Zazoo Apps</span></div><img src="{{ asset('frontend/images/project-8.jpg') }}" alt="alternative"></a>
+                    </div> <!-- end of grid -->
+                    <!-- end of filter -->
+                    
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Filter -->
+                    <div class="button-group filters-button-group">
+                        <a class="button is-checked" data-filter=".proyek"><span>PROYEK</span></a>
+                    </div> <!-- end of button group -->
+                    <div class="grid">
+                        <div class="element-item proyek">
+                            @foreach ($proyek as $pro)
+                                <a class="popup-with-move-anim" href="#project-1">
+                                    <div class="element-item-overlay">
+                                        <span>{{ $pro->keterangan }}</span>
+                                    </div>
+                                    <img src="{{ asset('storage/proyek/'. $pro->foto) }}" alt="">
+                                </a>
+                            @endforeach
                         </div>
                     </div> <!-- end of grid -->
                     <!-- end of filter -->

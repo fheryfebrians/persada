@@ -44,18 +44,12 @@
                         <p>Tim tulangan merupakan pekerjaan yang berakaitan dengan besi, adapun uraian pekerjaan seorang tim tulangan :</p>
     
                         <ul class="list-unstyled li-space-lg indent">
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Memastikan area kerja tetap bersih</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Memilah dan menempatkan tulangan sesuai dengan ukurannya.</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Memotong, membending dan merakit besi menjadi tulangan untuk beton.</div>
-                            </li>
+                            @foreach ($utpabrik as $ut)
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">{{ $ut->description }}</div>
+                                </li>
+                            @endforeach
                         </ul>
                         <a class="btn-outline-reg" href="{{ url('/') }}">BACK</a>
                     </div> <!-- end of text-container -->

@@ -37,25 +37,18 @@
                     <div class="text-container">
                         <h3>CV. Beton Emas Persada</h3>
                         <p>CV. Beton Emas Persada merupakan perusahaan yang bergerak dalam bidang pelayanan jasa konstruksi beton pracetak. CV.Beton Emas Persada memiliki 4 bidang pelayanan jasa diantaranya bidang tulangan, bidang pengecoran, bidang finishing dan bidang pekerjaan proyek fasilitas pabrik.</p> 
-                        <p>CV.Beton Emas Persada didirikan pada bulan september tahun 2016, Ali mahmudi menjadi sosok dibalik berdirinya perusahaan karena melihat peluang.</p>
                     </div>
                     <div class="text-container last">
                         <h3>Tim Tulangan</h3>
                         <p>Tim tulangan merupakan pekerjaan yang berakaitan dengan besi, adapun uraian pekerjaan seorang tim tulangan :</p>
     
                         <ul class="list-unstyled li-space-lg indent">
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Memastikan area kerja tetap bersih</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Memilah dan menempatkan tulangan sesuai dengan ukurannya.</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i>
-                                <div class="media-body">Memotong, membending dan merakit besi menjadi tulangan untuk beton.</div>
-                            </li>
+                            @foreach ($finishing as $finish)
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">{{ $finish->description }}</div>
+                                </li>
+                            @endforeach
                         </ul>
                         <a class="btn-outline-reg" href="{{ url('/') }}">BACK</a>
                     </div> <!-- end of text-container -->

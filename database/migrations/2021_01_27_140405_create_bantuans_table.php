@@ -17,9 +17,7 @@ class CreateBantuansTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug')->nullable();
             $table->string('nama')->nullable();
-            $table->string('telepon')->nullable();
             $table->string('email')->nullable();
-            $table->string('subyek')->nullable();
             $table->longText('deskripsi')->nullable();
             $table->string('tanggal')->nullable();
             $table->timestamps();

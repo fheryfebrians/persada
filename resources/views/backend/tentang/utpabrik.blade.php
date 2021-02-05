@@ -1,6 +1,6 @@
 @extends('backend.layout.index')
 
-@section('pageTitle', 'Visi')
+@section('pageTitle', 'Profile')
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('admin/js/jquery-ui-1.11.4.custom/jquery-ui.css') }}" type="text/css" />
@@ -12,18 +12,36 @@
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<div class="maintitle">
-				<h3 class="topspace">Visi Perusahaan</h3>
+				<h3 class="topspace">Tentang Utilitas Pabrik</h3>
             </div>
             
             <div class="row">
-                <div class="col-md-5">
-                    <div class="x_panel">
-                        {{-- @foreach ($persada as $persada) --}}
-                        <p>{{ $persada->visi }}</p>
-                        {{-- @endforeach --}}
+                <div class="col-md-6">
+                    <div class="table-responsive x_panel">
+                        <table class="table">
+                            <tr>
+                                <td class="nopaddingtd">
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        @foreach ($utpabriks as $utpabrik)
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{ $utpabrik->description }}</td>
+                                                </tr>
+                                            </tbody>
+                                        @endforeach
+                                    </table>
+                                    {{ $utpabriks->links() }}
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <div class="x_panel">
                         <div class="row">
                             <div class="col-md-12  col-sm-12 ptp10">
@@ -45,20 +63,21 @@
                                 </div>
                             </div> --}}
                             
-                            <div class="col-md-12  col-sm-8 ptp10">
+                            <div class="col-md-12  ptp10">
                                 
-                                <form class="form-horizontal form-label-left" name="frmBlogPost" id="frmBlogPost" action="{{ url('admin/visi/update/1') }}" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal form-label-left" name="frmBlogPost" id="formPost" action="{{ url('admin/tentang/utpabrik/create') }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PATCH')
+                                    
                                     <div class="item form-group">
-                                        <div class="col-md-12 col-sm-6 col-xs-12">
-                                            <textarea name="visi" id="summernote" cols="100" rows="20"></textarea>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12" for="name">Description <span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" class="form-control" name="description">
                                         </div>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <div class="col-sm-6 col-sm-offset-4 col-md-6 col-md-offset-4">
-                                            <button id="btnPost" name="btnPost" type="submit" class="btn btn-success">Update</button>
+                                        <div class="col-sm-6 col-sm-offset-4 col-md-8 col-md-offset-4">
+                                            <button id="btnPost" name="btnPost" type="submit" class="btn btn-success">Submit</button>
                                         </div>
                                     </div>
                                                     
@@ -87,7 +106,8 @@
   
 <script src="{{ asset('admin/js/jquery.validate.js') }}"></script>
 <script src="{{ asset('admin/js/additional-methods.min.js') }}"></script>
-{{-- <script type="text/javascript">
+{{-- 
+<script type="text/javascript">
 $(document).ready(function() {
   $('#summernote').summernote({
         placeholder: '',

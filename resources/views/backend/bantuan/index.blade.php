@@ -32,9 +32,7 @@
 												<tr class="headings">
 													<th>Tanggal</th>
                                                     <th>Nama</th>
-													<th>Telepon</th>
 													<th>Email</th>
-													<th>Subyek</th>
 													<th>Deskripsi</th>
 												</tr>
 											</thead>
@@ -43,9 +41,7 @@
                                                     <tr>
 														<td>{{ \Carbon\Carbon::parse($bantuan->tanggal)->format('d-m-Y') }}</td>
 														<td>{{ $bantuan->nama }}</td>
-														<td>{{ $bantuan->telepon }}</td>
 														<td>{{ $bantuan->email }}</td>
-														<td>{{ $bantuan->subyek }}</td>
 														<td>{{ $bantuan->deskripsi }}</td>
                                                     </tr>
                                                 </tbody>

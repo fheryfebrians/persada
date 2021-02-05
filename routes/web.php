@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::namespace('Frontend')->group(function () {
     Route::get('/', 'HomeController@index');
+    Route::post('/kontak-form', 'HomeController@addKontak');
     
     Route::group(['prefix' => 'tentang'], function () {
         Route::get('tulangan', 'TentangController@tulangan');
@@ -50,6 +51,7 @@ Route::namespace('Backend')->group(function () {
         Route::get('visi', 'ProfileController@visi');
         Route::patch('/visi/update/1', 'ProfileController@updateVisi');
         Route::get('misi', 'ProfileController@misi');
+        Route::post('misi/create', 'ProfileController@addMisi');
         Route::patch('/misi/update/1', 'ProfileController@updateMisi');
 
         Route::get('banner', 'BannerController@index');
@@ -68,5 +70,18 @@ Route::namespace('Backend')->group(function () {
         Route::patch('/kontak/update/1', 'KontakController@updateKontak');
 
         Route::get('bantuan', 'BantuanController@index');
+
+        Route::get('tentang/tulangan', 'TentangController@tulangan');
+        Route::post('tentang/tulangan/create', 'TentangController@addTulangan');
+        Route::patch('/tentang/tulangan/update/1', 'TentangController@updateTulangan');
+        Route::get('tentang/produksi', 'TentangController@produksi');
+        Route::post('tentang/produksi/create', 'TentangController@addProduksi');
+        Route::patch('/tentang/produksi/update/1', 'TentangController@updateProduksi');
+        Route::get('tentang/finishing', 'TentangController@finishing');
+        Route::post('tentang/finishing/create', 'TentangController@addFinishing');
+        Route::patch('/tentang/finishing/update/1', 'TentangController@updateFinishing');
+        Route::get('tentang/utpabrik', 'TentangController@utpabrik');
+        Route::post('tentang/utpabrik/create', 'TentangController@addUtpabrik');
+        Route::patch('/tentang/utpabrik/update/1', 'TentangController@updateUtpabrik');
     });
 });

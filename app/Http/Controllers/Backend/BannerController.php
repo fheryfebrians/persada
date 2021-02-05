@@ -8,6 +8,11 @@ use App\Models\Banner;
 
 class BannerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $banners = Banner::paginate(10);

@@ -19,7 +19,7 @@ class KontakController extends Controller
         return view('backend.kontak.index', compact('kontak'));
     }
 
-    public function updateKontak()
+    public function updateKontak(Request $request)
     {
         $kontak = Kontak::where('id', '1')->update([
             'plant' => $request->plant,

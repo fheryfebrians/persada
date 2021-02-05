@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PersadaProfile extends Model
 {
     protected $fillable = [
-        'profile', 'visi', 'misi'
+        'profile', 'visi'
     ];
 }

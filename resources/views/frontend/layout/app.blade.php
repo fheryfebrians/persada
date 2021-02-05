@@ -56,7 +56,7 @@
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="index.html"><img src="{{ asset('frontend/images/Logo.PNG') }}" alt="alternative"></a>
+        <a class="navbar-brand logo-image" href="{{ url('/') }}"><img src="{{ asset('frontend/images/Logo.PNG') }}" alt="alternative"></a>
         
         <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -131,10 +131,10 @@
                         <div class="section-title">KONTAK KAMI</div>
                         <h2>Hubungi Kami</h2>
                         <ul class="list-unstyled li-space-lg">
-                            <li class="address"><i class="fas fa-map-marker-alt"></i>Head Officce : Dukuh Jollong, Kel.Situluhur, Kec.Gembong, Kab . Pati - Jawa Tengah</li>
-                            <li class="address"><i class="fas fa-map-marker-alt"></i>Plant Factory : Kawasan Industri Surya Cipta Jl. Surya Madya III Kav. I-28Q Kutamekar, Kutanegara, Kec. Ciampel, Kabupaten Karawang, Jawa Barat 41363</li>
-                            <li><i class="fas fa-phone"></i><a href="tel:003024630820">+ +62 821-4631-9962</a></li>
-                            <li><i class="fas fa-envelope"></i><a href="mailto:office@aria.com">office@betonemaspersada.com</a></li>
+                            <li class="address"><i class="fas fa-map-marker-alt"></i>Head Officce : {{ $kontak->alamat }}</li>
+                            <li class="address"><i class="fas fa-map-marker-alt"></i>Plant Factory : {{ $kontak->plant }}</li>
+                            <li><i class="fas fa-phone"></i><a href="tel:003024630820">{{ $kontak->telepon }}</a></li>
+                            <li><i class="fas fa-envelope"></i><a href="mailto:office@aria.com">{{ $kontak->email }}</a></li>
                         </ul>
                         <h3>Follow Beton Emas Persada On Social Media</h3>
 
@@ -149,19 +149,19 @@
                 <div class="col-lg-6">
                     
                     <!-- Contact Form -->
-                    <form id="contactForm" data-toggle="validator" data-focus="false">
+                    <form id="contactForm" data-toggle="validator" data-focus="false" method="post" action="{{ url('/kontak-form') }}">
                         <div class="form-group">
-                            <input type="text" class="form-control-input" id="cname" required>
+                            <input type="text" class="form-control-input" id="cname" name="nama" required>
                             <label class="label-control" for="cname">Nama</label>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control-input" id="cemail" required>
+                            <input type="email" class="form-control-input" id="cemail" name="email" required>
                             <label class="label-control" for="cemail">Email</label>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control-textarea" id="cmessage" required></textarea>
+                            <textarea class="form-control-textarea" id="cmessage" name="deskripsi" required></textarea>
                             <label class="label-control" for="cmessage">Pesan Anda</label>
                             <div class="help-block with-errors"></div>
                         </div>

@@ -20,6 +20,17 @@
 			</ul>
 		</li>
 		<li style="cursor:pointer;">
+			<a>
+				<i class="fa fa-building-o"></i>Tentang<span class="caret" style="display: none;"></span>
+			</a>
+			<ul style="display: none">
+				<li class="menucls"><a href="{{ url('admin/tentang/tulangan') }}">Tim Tulangan</a></li>
+				<li class="menucls"><a href="{{ url('admin/tentang/produksi') }}">Tim Produksi</a></li>
+				<li class="menucls"><a href="{{ url('admin/tentang/finishing') }}">TIm Finishing</a></li>
+				<li class="menucls"><a href="{{ url('admin/tentang/utpabrik') }}">TIm Utilitas Pabrik</a></li>
+			</ul>
+		</li>
+		<li style="cursor:pointer;">
 			<a href="{{ url('admin/banner') }}">
 				<i class="fa fa-home"></i> Banner
 			</a>

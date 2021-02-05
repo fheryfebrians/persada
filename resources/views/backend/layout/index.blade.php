@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Persada | @yield('pageTitle')</title>
+	<title>Beton Emas Persada @yield('title')</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +30,8 @@
 	<link href="{{ asset('admin/css/sidemenu.css') }}" rel="stylesheet" type="text/css">
 	<link href="{{ asset('admin/css/jquery.navgoco.css') }}" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="{{ asset('admin/css/jquery.mCustomScrollbar.css') }}">
+	<link href="{{ asset('admin/css/summernote.min.css') }}" rel="stylesheet">
+
 	
 	@yield('styles')
 
@@ -40,6 +42,7 @@
 	<script src="{{ asset('admin/js/sidemenu.js') }}"></script>
 	<script src="{{ asset('admin/js/jquery.navgoco.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('admin/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+		<script src="{{ asset('admin/js/summernote.min.js') }}"></script>
 	@yield('scripts')
 
 </head>

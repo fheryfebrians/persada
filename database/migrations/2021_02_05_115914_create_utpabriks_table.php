@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersadaProfilesTable extends Migration
+class CreateUtpabriksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreatePersadaProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('persada_profiles', function (Blueprint $table) {
+        Schema::create('utpabriks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('profile')->nullable();
-            $table->longText('visi')->nullable();
+            $table->longText('description');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreatePersadaProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persada_profiles');
+        Schema::dropIfExists('utpabriks');
     }
 }

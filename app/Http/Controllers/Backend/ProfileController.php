@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PersadaProfile;
+use App\Models\PersadaMisi;
 
 class ProfileController extends Controller
 {
@@ -43,8 +44,16 @@ class ProfileController extends Controller
 
     public function misi()
     {
-        $persada = PersadaProfile::where('id', '1')->first();
-        return view('backend.profile.misi', compact('persada'));
+        $misis = PersadaMisi::paginate(10);
+        return view('backend.profile.misi', compact('misis'));
+    }
+
+    public function addMisi(Request $request)
+    {
+        $misi = new PersadaMisi();
+        $misi->misi = $request['misi'];
+        $misi->save();
+        return redirect()->back()->with('success', 'Misi Berhasil Ditambah');
     }
 
     public function updateMisi(Request $request)

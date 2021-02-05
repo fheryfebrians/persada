@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>{{ config('app.name', 'FindBO') }}</title>
+	<title>Beton Emas Persada @yield('title')</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -36,7 +36,7 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-12 text-center">
 						<a class="login-logo">
-							<img src="/logo/SVG/Black/Black.svg" alt="Logo Brand" class="img-responsive">
+							<img src="{{ asset('frontend/images/Logo.PNG') }}" alt="alternative" class="img-responsive">
 						</a>
 					</div>
 				</div>
