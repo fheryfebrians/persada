@@ -1,7 +1,7 @@
 <div style="min-width: 55px; max-width: 55px;" id="sidemenu" class="active">
 	<ul class="nav-new" id="menu">
 		<li><a class="logo-main" href="{{ url('admin/home') }}">
-			<img src="{{ asset('admin/images/logo.png') }}" alt="Logo Brand" class="img-responsive">
+			<img src="{{ asset('frontend/images/Logo.PNG') }}" alt="alternative" class="img-responsive">
 		</a></li>
 		<li style="cursor:pointer;"><a href="{{ url('admin/home') }}"> <i class="fa fa-dashboard"></i>Home</a></li>
 		<li style="cursor:pointer;">

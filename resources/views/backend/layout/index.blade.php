@@ -8,8 +8,8 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	
 	<!-- Fav and touch icons -->
-	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.ico') }}" />
-	
+	{{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.ico') }}" /> --}}
+	<link rel="icon" href="{{ asset('images/favicon.jpg') }}">
 	<!-- Bootstrap -->
 	<link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('admin/css/bootstrap-theme.css') }}" rel="stylesheet">

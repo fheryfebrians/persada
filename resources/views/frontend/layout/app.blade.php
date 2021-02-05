@@ -31,7 +31,7 @@
 	<link href="{{ asset('frontend/css/styles.css') }}" rel="stylesheet">
 	
 	<!-- Favicon  -->
-    <link rel="icon" href="images/favicon.jpg">
+    <link rel="icon" href="{{ asset('images/favicon.jpg') }}">
 
     <script src="{{ asset('frontend/js/jquery-3.1.1.min.js') }}"></script>
 	<script src="{{ asset('frontend/js/jquery.backstretch.min.js') }}"></script>
