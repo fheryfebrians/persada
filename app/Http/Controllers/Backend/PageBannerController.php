@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Banner;
 use Illuminate\Support\Str;
+use App\Models\PageBanner;
 
-class BannerController extends Controller
+class PageBannerController extends Controller
 {
     public function __construct()
     {
@@ -16,8 +16,8 @@ class BannerController extends Controller
     
     public function index()
     {
-        $banners = Banner::paginate(10);
-        return view('backend.banner.index', compact('banners'));
+        $banners = PageBanner::paginate(10);
+        return view('backend.pagebanner.index', compact('banners'));
     }
 
     public function create(Request $request)
@@ -26,22 +26,22 @@ class BannerController extends Controller
             $slug = uniqid();
             $file = $request->file('foto');
             $name = Str::slug($slug).'.'.$file->getClientOriginalExtension();
-            $request->file('foto')->move("storage/banner/", $name);
+            $request->file('foto')->move("storage/pagebanner/", $name);
             $foto = $name;
         } else {
             $foto = '';
         }
 
-        $banner = new Banner();
-        $banner->banner = $foto;
+        $banner = new PageBanner();
+        $banner->bidang = $request['bidang'];
+        $banner->foto = $foto;
         $banner->save();
         return redirect()->back()->with('toast_success', 'Banner Berhasil Ditambah');
     }
 
     public function delete($id)
     {
-        $banner = Banner::where('id', $id)->delete();
+        $banner = PageBanner::where('id', $id)->delete();
         return redirect()->back()->with('toast_success', 'Data Banner Berhasil Dihapus');
     }
-
 }

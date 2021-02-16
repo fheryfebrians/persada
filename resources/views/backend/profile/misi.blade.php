@@ -6,9 +6,6 @@
 		<div class="col-sm-12 col-md-12">
 			<div class="maintitle">
 				<h3 class="topspace">Misi Perusahaan</h3>
-				<div class="timebox">
-					<a href="{{ url('admin/proyek/create') }}" class="btn btn-primary">Add New Proyek</a>
-				</div>
             </div>
             
             <div class="row">
@@ -22,6 +19,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Misi</th>
+                                                <th>Act</th>
                                             </tr>
                                         </thead>
                                         @foreach ($misis as $misi)
@@ -29,6 +27,14 @@
                                                 <tr>
                                                     <td>{{ $misi->id }}</td>
                                                     <td>{{ $misi->misi }}</td>
+                                                    <td>
+                                                        <form action="{{ url('admin/misi/delete', $misi->id) }}" method="post">
+                                                            @csrf
+                                                            <button class="btn btn-danger">
+                                                                <i class="fa fa-trash"></i> DELETE
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         @endforeach

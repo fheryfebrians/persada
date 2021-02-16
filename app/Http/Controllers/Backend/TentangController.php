@@ -27,15 +27,14 @@ class TentangController extends Controller
         $tulangan = new Tulangan();
         $tulangan->description = $request['description'];
         $tulangan->save();
-        return redirect()->back()->with('success', 'Description Berhasil Ditambah');
+        return redirect()->back()->with('toast_success', 'Data Tulangan Berhasil Ditambah');
     }
 
-    public function updateTulangan(Request $request)
+
+    public function deleteTulangan($id)
     {
-        $tentang = Tentang::where('id', '1')->update([
-            'tulangan' => $request->tulangan
-        ]);
-        return redirect()->back()->with('success', 'Tentang Tulangan Berhasil Diupdate');
+        $tulangan = Tulangan::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data Tulangan Berhasil Dihapus');
     }
 
     public function produksi()
@@ -49,15 +48,13 @@ class TentangController extends Controller
         $produksi = new Produksi();
         $produksi->description = $request['description'];
         $produksi->save();
-        return redirect()->back()->with('success', 'Description Berhasil Ditambah');
+        return redirect()->back()->with('toast_success', 'Data Produksi Berhasil Ditambah');
     }
 
-    public function updateProduksi(Request $request)
+    public function deleteProduksi($id)
     {
-        $tentang = Tentang::where('id', '1')->update([
-            'produksi' => $request->produksi
-        ]);
-        return redirect()->back()->with('success', 'Tentang Prodiksi Berhasil Diupdate');
+        $produksi = Produksi::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data Produksi Berhasil Dihapus');
     }
 
     public function finishing()
@@ -71,15 +68,13 @@ class TentangController extends Controller
         $finishing = new Finishing();
         $finishing->description = $request['description'];
         $finishing->save();
-        return redirect()->back()->with('success', 'Description Berhasil Ditambah');
+        return redirect()->back()->with('toast_success', 'Data Finishing Berhasil Ditambah');
     }
 
-    public function updateFinishing(Request $request)
+    public function deleteFinishing($id)
     {
-        $tentang = Tentang::where('id', '1')->update([
-            'finishing' => $request->finishing
-        ]);
-        return redirect()->back()->with('success', 'Tentang Finishing Berhasil Diupdate');
+        $finishing = Finishing::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data Finishing Berhasil Dihapus');
     }
 
     public function utpabrik()
@@ -93,14 +88,13 @@ class TentangController extends Controller
         $utpabrik = new Utpabrik();
         $utpabrik->description = $request['description'];
         $utpabrik->save();
-        return redirect()->back()->with('success', 'Description Berhasil Ditambah');
+        return redirect()->back()->with('toast_success', 'Data Ut Pabrik Berhasil Ditambah');
     }
 
-    public function updateUtpabrik(Request $request)
+    public function deleteUtpabrik($id)
     {
-        $tentang = Tentang::where('id', '1')->update([
-            'utpabrik' => $request->utpabrik
-        ]);
-        return redirect()->back()->with('success', 'Tentang Utilitas Pabrik Berhasil Diupdate');
+        $utpabrik = Utpabrik::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data Utpabrik Berhasil Dihapus');
     }
+
 }

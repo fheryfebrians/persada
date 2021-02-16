@@ -31,6 +31,17 @@
 	<link href="{{ asset('admin/css/jquery.navgoco.css') }}" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="{{ asset('admin/css/jquery.mCustomScrollbar.css') }}">
 	<link href="{{ asset('admin/css/summernote.min.css') }}" rel="stylesheet">
+	<style>
+		.note-editable{
+			margin: 0 20px !important;
+		}
+		.note-editable ol{
+			margin: 0 30px  !important;
+		}
+		.p20{
+			padding: 0 20px !important;
+		}
+	</style>
 
 	
 	@yield('styles')
@@ -41,8 +52,10 @@
 	<script src="{{ asset('admin/js/main.js') }}"></script>
 	<script src="{{ asset('admin/js/sidemenu.js') }}"></script>
 	<script src="{{ asset('admin/js/jquery.navgoco.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('admin/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-		<script src="{{ asset('admin/js/summernote.min.js') }}"></script>
+	<script src="{{ asset('admin/js/jquery-ui-1.11.4.custom/jquery-ui.js') }}"></script>
+	<script src="{{ asset('admin/js/timepicker/jquery-ui-timepicker-addon.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('admin/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+	<script src="{{ asset('admin/js/summernote.min.js') }}"></script>
 	@yield('scripts')
 
 </head>

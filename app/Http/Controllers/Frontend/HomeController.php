@@ -11,6 +11,7 @@ use App\Models\Galeri;
 use App\Models\Proyek;
 use Carbon\Carbon;
 use App\Models\Bantuan;
+use App\Models\Banner;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
         $utilitas = Galeri::where('bidang', 'Tim Utilitas Pabrik')->get();
         $k3 = Galeri::where('bidang', 'K3')->get();
         $proyek = Proyek::all();
-        return view('frontend.home', compact('profiles', 'misis', 'kontak', 'tulangan', 'produksi', 'finishing', 'utilitas', 'k3', 'proyek'));
+        $banners = Banner::all();
+        return view('frontend.home', compact('profiles', 'misis', 'kontak', 'tulangan', 'produksi', 'finishing', 'utilitas', 'k3', 'proyek', 'banners'));
     }
 
     public function addKontak(Request $request)
@@ -40,5 +42,12 @@ class HomeController extends Controller
         $bantuan->tanggal = $tgl;
         $bantuan->save();
         return redirect()->back()->with('success', 'Pesan anda telah terkirim');
+    }
+
+    public function proyek()
+    {
+        $proyek = Proyek::all();
+        $kontak = Kontak::where('id', '1')->first();
+        return view('frontend.proyek.index', compact('proyek', 'kontak'));
     }
 }

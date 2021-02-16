@@ -1,5 +1,5 @@
 @extends('frontend.layout.app')
-@section('title', '| Galeri K3')
+@section('title', '| Galeri Tim K3')
 @section('content')
 
     <!-- Header -->
@@ -14,19 +14,19 @@
     <!-- end of header -->
 
 
-    <!-- Breadcrumbs -->
     <div class="ex-basic-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumbs">
-                        <a href="../index.html">Home</a><i class="fa fa-angle-double-right"></i><span>Proyek</span>
+                        <a href="../index.html">Home</a><i class="fa fa-angle-double-right"></i><span>Galeri Tim K3</span>
                     </div> <!-- end of breadcrumbs -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of ex-basic-1 -->
     <!-- end of breadcrumbs -->
+    
 
 
     <!-- Projects -->
@@ -36,23 +36,27 @@
                 <div class="col-lg-12">
                     <!-- Filter -->
                     <div class="grid">
-                        <div class="element-item k3">
-                            @foreach ($k3 as $tul)
-                                <a class="popup-with-move-anim" href="#project-1">
-                                    <div class="element-item-overlay">
-                                        <span>{{ $tul->description }}</span>
-                                    </div>
-                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
-                                </a>
-                            @endforeach
+                        @foreach ($k3 as $k3)
+                        <div class="element-item tulangan">
+                            <a class="popup-with-move-anim" href="#proyek{{ $k3->id }}">
+                                <div class="element-item-overlay">
+                                    <span>{!! $k3->keterangan !!}</span>
+                                </div>
+                                <img src="{{ asset('storage/galeri/'. $k3->foto) }}" alt="">
+                            </a>
                         </div>
-                    </div> <!-- end of grid -->
-                    <!-- end of filter -->
+                        <div id="proyek{{ $k3->id }}" class="lightbox-basic zoom-anim-dialog mfp-hide">
+                    		<div class="row">
+                    			<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                <img class="img-fluid" src="{{ asset('storage/galeri/'. $k3->foto) }}" alt="alternative">
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                     
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-		</div> <!-- end of container -->
-    </div> <!-- end of filter -->
-    <!-- end of projects -->
+                </div> 
+            </div>
+		</div>
+    </div>
 
 @endsection

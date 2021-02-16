@@ -25,7 +25,7 @@ class ProfileController extends Controller
         $persada = PersadaProfile::where('id', '1')->update([
             'profile' => $request->profile
         ]);
-        return redirect()->back()->with('success', 'Profile Berhasil Diupdate');
+        return redirect()->back()->with('toast_success', 'Profile Berhasil Diupdate');
     }
 
     public function visi()
@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $persada = PersadaProfile::where('id', '1')->update([
             'visi' => $request->visi
         ]);
-        return redirect()->back()->with('success', 'Visi Berhasil Diupdate');
+        return redirect()->back()->with('toast_success', 'Visi Berhasil Diupdate');
     }
 
     public function misi()
@@ -53,14 +53,12 @@ class ProfileController extends Controller
         $misi = new PersadaMisi();
         $misi->misi = $request['misi'];
         $misi->save();
-        return redirect()->back()->with('success', 'Misi Berhasil Ditambah');
+        return redirect()->back()->with('toast_success', 'Misi Berhasil Ditambah');
     }
 
-    public function updateMisi(Request $request)
+    public function deleteMisi($id)
     {
-        $persada = PersadaProfile::where('id', '1')->update([
-            'misi' => $request->misi
-        ]);
-        return redirect()->back()->with('success', 'Misi Berhasil Diupdate');
+        $misi = PersadaMisi::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Misi Berhasil Dihapus');
     }
 }

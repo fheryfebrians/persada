@@ -19,7 +19,7 @@
                 <div class="col-md-5">
                     <div class="x_panel">
                         {{-- @foreach ($persada as $persada) --}}
-                        <p>{{ $persada->visi }}</p>
+                        <p>{!! $persada->visi !!}</p>
                         {{-- @endforeach --}}
                     </div>
                 </div>
@@ -35,15 +35,6 @@
                             </div>
                             
                             <div class="clearfix"></div>
-                            {{-- <div class="col-md-4 col-sm-4 ptp10">
-                                <div class="item form-group">
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <textarea class="form-control" readonly>
-                                            ProfileProfileProfileProfileProfileProfileProfileProfileProfileProfileProfileProfile
-                                        </textarea>
-                                    </div>
-                                </div>
-                            </div> --}}
                             
                             <div class="col-md-12  col-sm-8 ptp10">
                                 
@@ -52,7 +43,7 @@
                                     @method('PATCH')
                                     <div class="item form-group">
                                         <div class="col-md-12 col-sm-6 col-xs-12">
-                                            <textarea name="visi" id="summernote" cols="100" rows="20"></textarea>
+                                            <textarea name="visi" id="visi" cols="100" rows="20"></textarea>
                                         </div>
                                     </div>
                                     
@@ -76,20 +67,9 @@
 @endsection
 
 @section('scripts')
-
-<script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('admin/ckeditor/sample.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/ckeditor/config.js') }}" type="text/javascript"></script>
-  
-  
-<script src="{{ asset('admin/js/jquery-ui-1.11.4.custom/jquery-ui.js') }}"></script>
-<script src="{{ asset('admin/js/timepicker/jquery-ui-timepicker-addon.js') }}"></script>
-  
-<script src="{{ asset('admin/js/jquery.validate.js') }}"></script>
-<script src="{{ asset('admin/js/additional-methods.min.js') }}"></script>
-{{-- <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
-  $('#summernote').summernote({
+  $('#visi').summernote({
         placeholder: '',
         tabsize: 2,
         height: 300,
@@ -104,5 +84,5 @@ $(document).ready(function() {
         ]
       });
 });
-</script> --}}
+</script>
 @endsection

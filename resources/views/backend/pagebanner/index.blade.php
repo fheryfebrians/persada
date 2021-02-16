@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<div class="maintitle">
-				<h3 class="topspace">Home Banner List</h3>
+				<h3 class="topspace">Page Banner List</h3>
 				<div class="timebox">
 					<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bannerModal">Add New Banner</a>
 				</div>
@@ -33,6 +33,7 @@
 										<table id="example" class="table table-striped responsive-utilities jambo_table">
 											<thead>
 												<tr class="headings">
+                                                    <th>Bidang</th>
                                                     <th>Banner</th>
                                                     <th>Action</th>
 												</tr>
@@ -40,11 +41,12 @@
                                             @foreach ($banners as $banner)
                                                 <tbody>
                                                     <tr>
+                                                        <th>{{ $banner->bidang }}</th>
                                                         <td>
-                                                            <img src="{{ asset('storage/banner/'. $banner->banner) }}" alt="" style="width: 100px;">
+                                                            <img src="{{ asset('storage/pagebanner/'. $banner->foto) }}" alt="" style="width: 100px;">
                                                         </td>
                                                         <td>
-                                                            <form action="{{ url('admin/banner/delete', $banner->id) }}" method="post">
+                                                            <form action="{{ url('admin/page-banner/delete', $banner->id) }}" method="post">
                                                                 @csrf
                                                                 <button class="btn btn-danger" type="submit">
                                                                     <i class="fa fa-trash"></i> DELETE
@@ -72,15 +74,32 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add new banner</h5>
+          <h5 class="modal-title">Add new page banner</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ url('admin/banner/create') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('admin/page-banner/create') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
-                <input type="file" name="foto">
+                <div class="form-group">
+                    <label for="">
+                        <strong>Bidang</strong>
+                    </label>
+                    <select name="bidang" class="form-control">
+                        <option>----</option>
+                        <option value="Tim Tulangan">Tim Tulangan</option>
+                        <option value="Tim Produksi">Tim Produksi</option>
+                        <option value="TIm Finishing">Tim Finishin</option>
+                        <option value="Tim UtPabrik">Tim Utilitas Pabrik</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">
+                        <strong>Banner</strong>
+                    </label>
+                    <input type="file" name="foto">
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save changes</button>

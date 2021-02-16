@@ -35,6 +35,7 @@
 												<tr class="headings">
 													<th>Nama</th>
                                                     <th>Email</th>
+													<th>Action</th>
 												</tr>
 											</thead>
                                             @foreach ($users as $user)
@@ -42,6 +43,14 @@
                                                     <tr>
                                                         <td>{{ $user->name }}</td>
                                                         <td>{{ $user->email }}</td>
+														<td>
+															<form action="{{ url('admin/new/delete', $user->id) }}" method="post">
+																@csrf
+																<button type="submit" class="btn btn-danger">
+																	<i class="fa fa-trash"></i> DELETE
+																</button>
+															</form>
+														</td>
                                                     </tr>
                                                 </tbody>
                                             @endforeach

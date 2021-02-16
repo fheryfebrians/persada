@@ -3,18 +3,25 @@
     <!-- Header -->
     <header id="header" class="header">
         <div class="header-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-container">
-                            <h1><span id="js-rotating">TIM PRODUKSI, TIM TULANGAN, TIM FINISHING, TIM UTILITAS PABRIK</span></h1>
-                            <p class="p-heading p-large">CV. Beton Emas Persada adalah Perusahaan mitra terpercaya dalam industri penyedia jasa beton pracetak dan konstruksi. 
-                            </p>
-                            <a class="btn-solid-lg page-scroll" href="#intro">DISCOVER</a>
+            <ul class="cb-slideshow">
+                @foreach ($banners as $banner)
+                    <li class="unstyled">
+                        <img src="{{ asset('storage/banner/'.$banner->banner) }}" alt="" class="img-full">
+                    </li>
+                @endforeach
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="text-container">
+                                <p class="p-heading p-large">
+                                    CV.Beton Emas Persada adalah Perusahaan mitra terpercaya dalam industri penyedia jasa beton pracetak dan konstruksi 
+                                </p>
+                                <a class="btn-solid-lg page-scroll" href="#">DISCOVER</a>
+                            </div>
                         </div>
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
+                    </div>
+                </div>
+            </ul>
         </div> <!-- end of header-content -->
     </header> <!-- end of header -->
     <!-- end of header -->
@@ -28,7 +35,7 @@
                     <div class="text-container">
                         <div class="section-title">Sekilas Tentang Kami</div>
                         <h2>Beton Emas Persada</h2>
-                        <p>{{ $profiles->profile }}</p>                        
+                        <p>{!! $profiles->profile !!}</p>                        
                         
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
@@ -106,7 +113,7 @@
                         </span>
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOne">
-                        {{ $profiles->visi }}
+                        {!! $profiles->visi !!}
                     </div>
                 </div> <!-- end of item -->
 
@@ -120,7 +127,7 @@
                         <ul class="list-unstyled li-space-lg indent">
                             @foreach ($misis as $misi)
                                 <li class="media">
-                                    <i class="fas fa-square"></i>
+                                    <i class="fas fa-dot-circle"></i>
                                     <div class="media-body">{{ $misi->misi }}</div>
                                 </li>
                             @endforeach
@@ -161,54 +168,94 @@
                         <a class="button" data-filter=".k3"><span>K3</span></a>
                     </div> <!-- end of button group -->
                     <div class="grid">
-                        <div class="element-item tulangan">
+                        <div class="tulangan">
                             @foreach ($tulangan as $tul)
-                                <a class="popup-with-move-anim" href="#project-1">
-                                    <div class="element-item-overlay">
-                                        <span>{{ $tul->description }}</span>
+                                <div class="element-item">
+                                    <a class="popup-with-move-anim" href="#proyek{{ $tul->id }}">
+                                        <div class="element-item-overlay">
+                                            <span>{!! $tul->keterangan !!}</span>
+                                        </div>
+                                        <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
+                                    </a>
+                                </div>
+                                <div id="proyek{{ $tul->id }}" class="lightbox-basic zoom-anim-dialog mfp-hide">
+                            		<div class="row">
+                            			<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <img class="img-fluid" src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="alternative">
                                     </div>
-                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
-                                </a>
+                                </div>
                             @endforeach
                         </div>
-                        <div class="element-item produksi">
-                            @foreach ($produksi as $tul)
-                                <a class="popup-with-move-anim" href="#project-1">
-                                    <div class="element-item-overlay">
-                                        <span>{{ $tul->description }}</span>
+                        <div class="produksi">
+                            @foreach ($produksi as $pro)
+                                <div class="element-item">
+                                    <a class="popup-with-move-anim" href="#proyek{{ $pro->id }}">
+                                        <div class="element-item-overlay">
+                                            <span>{!! $pro->keterangan !!}</span>
+                                        </div>
+                                        <img src="{{ asset('storage/galeri/'. $pro->foto) }}" alt="">
+                                    </a>
+                                </div>
+                                <div id="proyek{{ $pro->id }}" class="lightbox-basic zoom-anim-dialog mfp-hide">
+                            		<div class="row">
+                            			<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <img class="img-fluid" src="{{ asset('storage/galeri/'. $pro->foto) }}" alt="alternative">
                                     </div>
-                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
-                                </a>
+                                </div>
                             @endforeach
                         </div>
-                        <div class="element-item design finishing">
-                            @foreach ($finishing as $tul)
-                                <a class="popup-with-move-anim" href="#project-1">
-                                    <div class="element-item-overlay">
-                                        <span>{{ $tul->description }}</span>
+                        <div class="finishing">
+                            @foreach ($finishing as $finish)
+                                <div class="element-item">
+                                    <a class="popup-with-move-anim" href="#proyek{{ $finish->id }}">
+                                        <div class="element-item-overlay">
+                                            <span>{!! $finish->keterangan !!}</span>
+                                        </div>
+                                        <img src="{{ asset('storage/galeri/'. $finish->foto) }}" alt="">
+                                    </a>
+                                </div>
+                                <div id="proyek{{ $finish->id }}" class="lightbox-basic zoom-anim-dialog mfp-hide">
+                            		<div class="row">
+                            			<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <img class="img-fluid" src="{{ asset('storage/galeri/'. $finish->foto) }}" alt="alternative">
                                     </div>
-                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
-                                </a>
+                                </div>
                             @endforeach
                         </div>
-                        <div class="element-item utilitas">
-                            @foreach ($utilitas as $tul)
-                                <a class="popup-with-move-anim" href="#project-1">
-                                    <div class="element-item-overlay">
-                                        <span>{{ $tul->description }}</span>
+                        <div class="utilitas">
+                            @foreach ($utilitas as $utilitas)
+                                <div class="element-item">
+                                    <a class="popup-with-move-anim" href="#proyek{{ $utilitas->id }}">
+                                        <div class="element-item-overlay">
+                                            <span>{!! $tul->keterangan !!}</span>
+                                        </div>
+                                        <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
+                                    </a>
+                                </div>
+                                <div id="proyek{{ $utilitas->id }}" class="lightbox-basic zoom-anim-dialog mfp-hide">
+                            		<div class="row">
+                            			<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <img class="img-fluid" src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="alternative">
                                     </div>
-                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
-                                </a>
+                                </div>
                             @endforeach
                         </div>
-                        <div class="element-item k3">
-                            @foreach ($k3 as $tul)
-                                <a class="popup-with-move-anim" href="#project-1">
-                                    <div class="element-item-overlay">
-                                        <span>{{ $tul->description }}</span>
+                        <div class="k3">
+                             @foreach ($k3 as $k3)
+                                <div class="element-item">
+                                    <a class="popup-with-move-anim" href="#proyek{{ $k3->id }}">
+                                        <div class="element-item-overlay">
+                                            <span>{!! $k3->keterangan !!}</span>
+                                        </div>
+                                        <img src="{{ asset('storage/galeri/'. $k3->foto) }}" alt="">
+                                    </a>
+                                </div>
+                                <div id="proyek{{ $k3->id }}" class="lightbox-basic zoom-anim-dialog mfp-hide">
+                            		<div class="row">
+                            			<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <img class="img-fluid" src="{{ asset('storage/galeri/'. $k3->foto) }}" alt="alternative">
                                     </div>
-                                    <img src="{{ asset('storage/galeri/'. $tul->foto) }}" alt="">
-                                </a>
+                                </div>
                             @endforeach
                         </div>
                     </div> <!-- end of grid -->
@@ -223,14 +270,35 @@
                         <a class="button is-checked" data-filter=".proyek"><span>PROYEK</span></a>
                     </div> <!-- end of button group -->
                     <div class="grid">
-                        <div class="element-item proyek">
+                        <div class="proyek">
                             @foreach ($proyek as $pro)
-                                <a class="popup-with-move-anim" href="#project-1">
-                                    <div class="element-item-overlay">
-                                        <span>{{ $pro->keterangan }}</span>
-                                    </div>
-                                    <img src="{{ asset('storage/proyek/'. $pro->foto) }}" alt="">
-                                </a>
+                                <div class="element-item">
+                                    <a class="popup-with-move-anim" href="#proyek{{ $pro->id }}">
+                                        <div class="element-item-overlay">
+                                            <span>{!! $pro->keterangan !!}</span>
+                                        </div>
+                                        <img src="{{ asset('storage/proyek/'. $pro->foto) }}" alt="">
+                                    </a>
+                                </div>
+                                <div id="proyek{{ $pro->id }}" class="lightbox-basic zoom-anim-dialog mfp-hide">
+                                    <div class="row">
+                                        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div class="col-lg-8">
+                                            <img class="img-fluid" src="{{ asset('storage/proyek/'. $pro->foto) }}" alt="alternative">
+                                        </div> <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <h3>{!! $pro->keterangan !!}</h3>
+                                            <!--<hr class="line-heading">-->
+                                            <!--<h6>Strategy Development</h6>-->
+                                            <!--<p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your current needs</p>-->
+                                            <!--<p>By offering the best professional services and quality products in the market. Don't hesitate and get in touch with us.</p>-->
+                                            <!--<div class="testimonial-container">-->
+                                            <!--    <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your current requirements.</p>-->
+                                            <!--    <p class="testimonial-author">General Manager</p>-->
+                                            <!--</div>-->
+                                        </div> <!-- end of col -->
+                                    </div> <!-- end of row -->
+                                </div>
                             @endforeach
                         </div>
                     </div> <!-- end of grid -->

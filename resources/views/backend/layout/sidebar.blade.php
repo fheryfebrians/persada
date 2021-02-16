@@ -32,7 +32,12 @@
 		</li>
 		<li style="cursor:pointer;">
 			<a href="{{ url('admin/banner') }}">
-				<i class="fa fa-home"></i> Banner
+				<i class="fa fa-photo"></i> Home Banner
+			</a>
+		</li>
+		<li style="cursor:pointer;">
+			<a href="{{ url('admin/page-banner') }}">
+				<i class="fa fa-photo"></i> Page Banner
 			</a>
 		</li>
 		<li style="cursor:pointer;">
@@ -42,7 +47,7 @@
 		</li>
 		<li style="cursor:pointer;">
 			<a href="{{ url('admin/galeri') }}">
-				<i class="fa fa-envelope-o"></i> Daftar Gallery
+				<i class="fa fa-photo"></i> Daftar Gallery
 			</a>
 		</li>
 		<li style="cursor:pointer;">

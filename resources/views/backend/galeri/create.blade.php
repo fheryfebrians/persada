@@ -55,7 +55,7 @@
                             <div class="item form-group">
 								<label class="control-label col-md-4 col-sm-4 col-xs-12" for="name">Keterangan <span class="required">*</span></label>
 								<div class="col-md-4 col-sm-6 col-xs-12">
-									<textarea name="keterangan" id="keterangan" class="form-control"></textarea>
+									<textarea name="keterangan" id="galeri" class="form-control"></textarea>
 								</div>
 							</div>
 							
@@ -78,16 +78,22 @@
 @endsection
 
 @section('scripts')
-
-<script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('admin/ckeditor/sample.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/ckeditor/config.js') }}" type="text/javascript"></script>
-  
-  
-<script src="{{ asset('admin/js/jquery-ui-1.11.4.custom/jquery-ui.js') }}"></script>
-<script src="{{ asset('admin/js/timepicker/jquery-ui-timepicker-addon.js') }}"></script>
-  
-<script src="{{ asset('admin/js/jquery.validate.js') }}"></script>
-<script src="{{ asset('admin/js/additional-methods.min.js') }}"></script>
-
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#galeri').summernote({
+        placeholder: '',
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+});
+</script>
 @endsection

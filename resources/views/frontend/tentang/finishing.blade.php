@@ -3,14 +3,17 @@
 @section('content')
 
     <!-- Header -->
-    <header id="header" class="ex-header-tulangan">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </header> <!-- end of ex-header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <ul class="cb-slideshow">
+                @foreach ($banners as $banner)
+                    <li class="unstyled">
+                        <img src="{{ asset('storage/pagebanner/'.$banner->foto) }}" alt="" class="img-full2">
+                    </li>
+                @endforeach
+            </ul>
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
     <!-- end of header -->
 
 
@@ -20,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumbs">
-                        <a href="../index.html">Home</a><i class="fa fa-angle-double-right"></i><span>Tentang Tim Tulangan</span>
+                        <a href="../index.html">Home</a><i class="fa fa-angle-double-right"></i><span>Tentang Tim Finishing</span>
                     </div> <!-- end of breadcrumbs -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -39,17 +42,11 @@
                         <p>CV. Beton Emas Persada merupakan perusahaan yang bergerak dalam bidang pelayanan jasa konstruksi beton pracetak. CV.Beton Emas Persada memiliki 4 bidang pelayanan jasa diantaranya bidang tulangan, bidang pengecoran, bidang finishing dan bidang pekerjaan proyek fasilitas pabrik.</p> 
                     </div>
                     <div class="text-container last">
-                        <h3>Tim Tulangan</h3>
-                        <p>Tim tulangan merupakan pekerjaan yang berakaitan dengan besi, adapun uraian pekerjaan seorang tim tulangan :</p>
-    
-                        <ul class="list-unstyled li-space-lg indent">
-                            @foreach ($finishing as $finish)
-                                <li class="media">
-                                    <i class="fas fa-square"></i>
-                                    <div class="media-body">{{ $finish->description }}</div>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <h3>Tim Finishing</h3>
+                        @foreach ($finishing as $finish)
+                            <p>{!! $finish->description !!}</p><br>
+                        @endforeach
+
                         <a class="btn-outline-reg" href="{{ url('/') }}">BACK</a>
                     </div> <!-- end of text-container -->
                 </div>

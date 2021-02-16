@@ -28,8 +28,9 @@ class ProyekController extends Controller
     public function postCreate(Request $request)
     {
         if($request->hasFile('foto')) {
+            $slug = uniqid();
             $file = $request->file('foto');
-            $name = Str::slug($request->keterangan).'.'.$file->getClientOriginalExtension();
+            $name = Str::slug($slug).'.'.$file->getClientOriginalExtension();
             $request->file('foto')->move("storage/proyek/", $name);
             $foto = $name;
         } else {
@@ -40,6 +41,12 @@ class ProyekController extends Controller
         $proyek->foto = $foto;
         $proyek->keterangan = $request->keterangan;
         $proyek->save();
-        return redirect('admin/proyek')->with('success', 'Proyek Berhasil Ditambah');
+        return redirect('admin/proyek')->with('toast_success', 'Proyek Berhasil Ditambah');
+    }
+
+    public function delete($id)
+    {
+        $proyek = Proyek::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data Proyek Berhasil Dihapus');
     }
 }

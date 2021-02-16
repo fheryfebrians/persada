@@ -33,21 +33,28 @@
 										<table id="example" class="table table-striped responsive-utilities jambo_table">
 											<thead>
 												<tr class="headings">
-													<th>ID</th>
 													<th>Bidang</th>
                                                     <th>Foto</th>
                                                     <th>Keterangan</th>
+													<th>Action</th>
 												</tr>
 											</thead>
                                             @foreach ($galeris as $galeri)
                                                 <tbody>
                                                     <tr>
-														<td>{{ $galeri->id }}</td>
 														<td>{{ $galeri->bidang }}</td>
                                                         <td>
                                                             <img src="{{ asset('storage/galeri/'. $galeri->foto) }}" alt="" style="width: 100px;">
                                                         </td>
-                                                        <td>{{ $galeri->keterangan }}</td>
+                                                        <td>{!! $galeri->keterangan !!}</td>
+														<td>
+                                                            <form action="{{ url('admin/galeri/delete', $galeri->id) }}" method="post">
+                                                                @csrf
+                                                                <button class="btn btn-danger" type="submit">
+                                                                    <i class="fa fa-trash"></i> DELETE
+                                                                </button>
+                                                            </form>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             @endforeach

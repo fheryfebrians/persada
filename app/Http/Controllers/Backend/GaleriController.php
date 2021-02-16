@@ -28,8 +28,9 @@ class GaleriController extends Controller
     public function postCreate(Request $request)
     {
         if($request->hasFile('foto')) {
+            $slug = Uniqid();
             $file = $request->file('foto');
-            $name = Str::slug($request->keterangan).'.'.$file->getClientOriginalExtension();
+            $name = Str::slug($slug).'.'.$file->getClientOriginalExtension();
             $request->file('foto')->move("storage/galeri/", $name);
             $foto = $name;
         } else {
@@ -37,10 +38,16 @@ class GaleriController extends Controller
         }
 
         $galeri = new Galeri();
-        $galeri->kategori = $request->kategori;
+        $galeri->bidang = $request->bidang;
         $galeri->foto = $foto;
         $galeri->keterangan = $request->keterangan;
         $galeri->save();
-        return redirect('admin/galeri')->with('success', 'Galeri Berhasil Ditambah');
+        return redirect('admin/galeri')->with('toast_success', 'Galeri Berhasil Ditambah');
+    }
+
+    public function delete($id)
+    {
+        $galeri = Galeri::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Data Galeri Berhasil Dihapus');
     }
 }

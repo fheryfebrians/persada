@@ -22,11 +22,11 @@
                             <tbody>
                                 <tr>
                                     <td>Plant</td>
-                                    <td>{{ $kontak->plant }}</td>
+                                    <td>{!! $kontak->plant !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-                                    <td>{{ $kontak->alamat }}</td>
+                                    <td>{!! $kontak->alamat !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Telepon</td>
@@ -76,6 +76,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12" for="name">Plant <span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <textarea name="plant" id="plant" class="form-control" value="{{ $kontak->plant }}"></textarea>
+                                            <input type="hidden" name="plant2" value="{{ $kontak->plant }}">
                                         </div>
                                     </div>
 
@@ -83,6 +84,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12" for="name">Alamat <span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <textarea name="alamat" id="alamat" class="form-control" value="{{ $kontak->alamat }}"></textarea>
+                                            <input type="hidden" name="alamat2" value="{{ $kontak->alamat }}">
                                         </div>
                                     </div>
                                     
@@ -127,15 +129,34 @@
 @endsection
 
 @section('scripts')
-
-<script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('admin/ckeditor/sample.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/ckeditor/config.js') }}" type="text/javascript"></script>
-  
-  
-<script src="{{ asset('admin/js/jquery-ui-1.11.4.custom/jquery-ui.js') }}"></script>
-<script src="{{ asset('admin/js/timepicker/jquery-ui-timepicker-addon.js') }}"></script>
-  
-<script src="{{ asset('admin/js/jquery.validate.js') }}"></script>
-<script src="{{ asset('admin/js/additional-methods.min.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#plant').summernote({
+        placeholder: '',
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    $('#alamat').summernote({
+        placeholder: '',
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+});
+</script>
 @endsection

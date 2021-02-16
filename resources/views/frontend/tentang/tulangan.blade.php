@@ -3,14 +3,17 @@
 @section('content')
 
     <!-- Header -->
-    <header id="header" class="ex-header-tulangan">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </header> <!-- end of ex-header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <ul class="cb-slideshow">
+                @foreach ($banners as $banner)
+                    <li class="unstyled">
+                        <img src="{{ asset('storage/pagebanner/'.$banner->foto) }}" alt="" class="img-full2">
+                    </li>
+                @endforeach
+            </ul>
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
     <!-- end of header -->
 
 
@@ -40,17 +43,9 @@
                     </div>
                     <div class="text-container last">
                         <h3>Tim Tulangan</h3>
-                        <p>Tim tulangan merupakan pekerjaan yang berakaitan dengan besi, adapun uraian pekerjaan seorang tim tulangan :</p>
-    
-                        <ul class="list-unstyled li-space-lg indent">
-                            @foreach ($tulangan as $tul)
-                                <li class="media">
-                                    <i class="fas fa-square"></i>
-                                    <div class="media-body">{{ $tul->description }}</div>
-                                </li>
-                            @endforeach
-                            
-                        </ul>
+                        @foreach ($tulangan as $tul)
+                            <p>{!! $tul->description !!}</p><br>
+                        @endforeach
                         <a class="btn-outline-reg" href="{{ url('/') }}">BACK</a>
                     </div> <!-- end of text-container -->
                 </div>

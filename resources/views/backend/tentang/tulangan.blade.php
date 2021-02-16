@@ -25,12 +25,21 @@
                                         <thead>
                                             <tr>
                                                 <th>Description</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         @foreach ($tulangans as $tulangan)
                                             <tbody>
                                                 <tr>
-                                                    <td>{{ $tulangan->description }}</td>
+                                                    <td class="p20">{!! $tulangan->description !!}</td>
+                                                    <td>
+                                                        <form action="{{ url('admin/tentang/tulangan/delete', $tulangan->id) }}" method="post">
+                                                            @csrf
+                                                            <button class="btn btn-danger" type="submit">
+                                                                <i class="fa fa-trash"></i> DELETE
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         @endforeach
@@ -53,15 +62,6 @@
                             </div>
                             
                             <div class="clearfix"></div>
-                            {{-- <div class="col-md-4 col-sm-4 ptp10">
-                                <div class="item form-group">
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <textarea class="form-control" readonly>
-                                            ProfileProfileProfileProfileProfileProfileProfileProfileProfileProfileProfileProfile
-                                        </textarea>
-                                    </div>
-                                </div>
-                            </div> --}}
                             
                             <div class="col-md-12  ptp10">
                                 
@@ -69,9 +69,8 @@
                                     @csrf
                                     
                                     <div class="item form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12" for="name">Description <span class="required">*</span></label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" class="form-control" name="description">
+                                        <div class="col-md-12 col-sm-6 col-xs-12">
+                                            <textarea name="description" id="tulangan"></textarea>
                                         </div>
                                     </div>
                                     
@@ -95,21 +94,9 @@
 @endsection
 
 @section('scripts')
-
-<script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('admin/ckeditor/sample.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/ckeditor/config.js') }}" type="text/javascript"></script>
-  
-  
-<script src="{{ asset('admin/js/jquery-ui-1.11.4.custom/jquery-ui.js') }}"></script>
-<script src="{{ asset('admin/js/timepicker/jquery-ui-timepicker-addon.js') }}"></script>
-  
-<script src="{{ asset('admin/js/jquery.validate.js') }}"></script>
-<script src="{{ asset('admin/js/additional-methods.min.js') }}"></script>
-
-{{-- <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
-  $('#summernote').summernote({
+  $('#tulangan').summernote({
         placeholder: '',
         tabsize: 2,
         height: 300,
@@ -124,5 +111,5 @@ $(document).ready(function() {
         ]
       });
 });
-</script> --}}
+</script>
 @endsection

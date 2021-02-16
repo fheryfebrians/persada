@@ -68,7 +68,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link page-scroll" href="{{ url('/') }}">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <!-- Dropdown Menu -->          
                 <li class="nav-item dropdown">
@@ -84,7 +84,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#proyek">PROYEK</a>
+                    <a class="nav-link page-scroll" href="{{ url('proyek') }}">PROYEK</a>
                 </li>
                 <!-- Dropdown Menu -->          
                 <li class="nav-item dropdown">
@@ -131,8 +131,8 @@
                         <div class="section-title">KONTAK KAMI</div>
                         <h2>Hubungi Kami</h2>
                         <ul class="list-unstyled li-space-lg">
-                            <li class="address"><i class="fas fa-map-marker-alt"></i>Head Officce : {{ $kontak->alamat }}</li>
-                            <li class="address"><i class="fas fa-map-marker-alt"></i>Plant Factory : {{ $kontak->plant }}</li>
+                            <li class="address"><i class="fas fa-map-marker-alt"></i>Head Officce : {!! $kontak->alamat !!}</li>
+                            <li class="address"><i class="fas fa-map-marker-alt"></i>Plant Factory : {!! $kontak->plant !!}</li>
                             <li><i class="fas fa-phone"></i><a href="tel:003024630820">{{ $kontak->telepon }}</a></li>
                             <li><i class="fas fa-envelope"></i><a href="mailto:office@aria.com">{{ $kontak->email }}</a></li>
                         </ul>

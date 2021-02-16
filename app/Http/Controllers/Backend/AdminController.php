@@ -31,6 +31,12 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
-        return redirect('admin/new')->with('success', 'Admin Berhasil Ditambah');
+        return redirect('admin/new')->with('toast_success', 'Admin Berhasil Ditambah');
+    }
+
+    public function delete($id)
+    {
+        $user = User::where('id', $id)->delete();
+        return redirect()->back()->with('toast_success', 'Admin Berhasil Dihapus');
     }
 }
